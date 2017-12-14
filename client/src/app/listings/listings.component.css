@@ -1,0 +1,10 @@
+p{
+    display : inline-block;
+}
+
+div{
+    
+    border: 2px solid blue;
+    margin: 10px;
+    padding : 10px;
+}

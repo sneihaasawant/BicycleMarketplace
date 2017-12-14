@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <form>
+        <p>Search :
+           <input type='text' name='search' [(ngModel)]="strsearch">
+           <input type='submit' value='Search'></p>        
+    </form>
+  </div>
+  <br>
+  <div *ngFor='let bike of bikes | search: strsearch ; let idx = index'>  
+    <p>Title : {{bike.title}}</p>  
+    <p>Description : {{bike.description}}</p> 
+    <p>Price : {{bike.price}}</p> 
+    <p>Location : {{bike.location}}</p> 
+    <p>Url : {{bike.url}}</p> 
+    <button *ngIf='currentUser !== bike.userid' (click)='contact(bike)'>Contact</button>
+    <button *ngIf='currentUser === bike.userid' (click)='delete(bike._id)'>Delete</button>
+  </div>
+
+</body>
+</html>

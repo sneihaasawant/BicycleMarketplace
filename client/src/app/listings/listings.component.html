@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h2> Create listing</h2>
+    <form (submit)='createBike()' #createForm='ngForm'>
+      
+    <p>Title : <input type='text' name='title' required minlength="1" [(ngModel)]='bike.title' [ngClass]="{ boxborder : title.errors }"
+        #title="ngModel"></p>
+    <span *ngIf='title.errors'>Error : </span>
+    <span *ngIf='title.errors?.required'>Title is required</span>
+    <span *ngIf='title.errors?.minlength'>Minimum length is {{title.errors.minlength.requiredLength}}</span>
+<br>
+
+    <p>Description :
+      <textarea name='description' required minlength="1" [(ngModel)]='bike.description' [ngClass]="{ boxborder : description.errors }"
+        #description="ngModel"></textarea></p>
+    
+    <span *ngIf='description.errors'>Error : </span>
+    <span *ngIf='description.errors?.required'>Description is required</span>
+    <span *ngIf='description.errors?.minlength'>Minimum length is {{description.errors.minlength.requiredLength}}</span>
+    <br>
+
+  <p>Price :
+      <input type='text' name='price' required minlength="1" [(ngModel)]='bike.price' [ngClass]="{ boxborder : price.errors }"
+        #price="ngModel">
+    </p>
+    <span *ngIf='price.errors'>Error : </span>
+    <span *ngIf='price.errors?.required'>Price is required</span>
+    <span *ngIf='price.errors?.minlength'>Minimum length is {{price.errors.minlength.requiredLength}}</span>
+    <br>
+
+  <p>Location :
+      <input type='text' name='location' required minlength="1" [(ngModel)]='bike.location' [ngClass]="{ boxborder : location.errors }"
+        #location="ngModel">
+    </p>
+    <span *ngIf='location.errors'>Error : </span>
+    <span *ngIf='location.errors?.required'>Location is required</span>
+    <span *ngIf='location.errors?.minlength'>Minimum length is {{location.errors.minlength.requiredLength}}</span>
+    <br>
+    <p>Image Link :
+      <input type='text' name='url' required minlength="1" [(ngModel)]='bike.url' [ngClass]="{ boxborder : url.errors }"
+        #url="ngModel">
+    </p>
+    <span *ngIf='url.errors'>Error : </span>
+    <span *ngIf='url.errors?.required'>Loaction is required</span>
+    <span *ngIf='url.errors?.minlength'>Minimum length is {{url.errors.minlength.requiredLength}}</span>
+    <br>
+    <p><input type='submit' value='Create' style='background-color : green' class='button' [disabled]='!createForm.valid'></p>
+    
+  </form>
+  </div>
+<!-- {{ myBikes | json }} -->
+  <div><h2> Edit/Delete listing</h2> 
+    <div *ngFor='let mybike of myBikes; let idx = index'>  
+        <form (submit)='update(mybike)'>
+            <p>Title :<input type='text' name='title' placeholder={{mybike.title}} [(ngModel)]='mybike.title'></p>
+            <br>
+            <p>Description :<input type='text' name='description' placeholder={{mybike.description}} [(ngModel)]='mybike.description'></p>
+            <br>
+            <p>Price :<input type='text' name='price' placeholder={{mybike.price}} [(ngModel)]='mybike.price'></p>
+            <br>
+            <p>Location :<input type='text' name='location' placeholder={{mybike.location}} [(ngModel)]='mybike.location'></p>
+            <br>
+            <p>Url :<input type='text' name='url' placeholder={{mybike.url}} [(ngModel)]='mybike.url'></p>
+            <br>
+            <p><input type='submit' value='Update' ></p>
+            <br>
+            <button>Delete</button>
+          </form>
+      </div>
+  </div>
+</body>
+</html>
