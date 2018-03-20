@@ -20,7 +20,7 @@ export class ListingsComponent implements OnInit {
   createBike() {
     console.log(this.bike);
     this._userService.addbike(this.bike)
-    .then(() => console.log('Bike created') )
+    .then(() => {console.log('Bike created');this.getAllMyBikes();} )
     .catch( err => console.log('Bike error', err));
   }
 
