@@ -42,27 +42,24 @@
       <br>
       
       <p>Password :
-        <input type='text' name='password' required minlength="1" [(ngModel)]='user.password' 
+        <input type='password' name='password' required minlength="1" [(ngModel)]='user.password' 
         [ngClass]="{ boxborder : password.errors }"
         pattern="^([a-zA-Z0-9@*#]{1,2})$"
         #password="ngModel">
             </p>
         <span *ngIf='password.errors'>Error : </span>
         <span *ngIf='password.errors?.required'>Password is required</span>
-        <span *ngIf='password.errors?.minlength'>Minimum length is {{password.errors.minlength.requiredLength}}</span>
-
+       
        <br>
 
       <p>Password Confirmation:
-        <input type='text' name='confirm_password' required minlength="1" [(ngModel)]='user.cpassword' 
+        <input type='password' name='confirm_password' required minlength="1" [(ngModel)]='user.cpassword' 
         [ngClass]="{ boxborder : password.errors }"
-        pattern="^([a-zA-Z0-9@*#]{1,2})$"
         #cpassword="ngModel"></p>
         <span *ngIf='cpassword.errors'>Error : </span>
         <span *ngIf='cpassword.errors?.required'>CPassword is required</span>
         <span *ngIf="!(user.password === user.cpassword)">Password not same</span>
-        <span *ngIf='cpassword.errors?.minlength'>Minimum length is {{cpassword.errors.minlength.requiredLength}}</span>
-
+     
       <br>
     <p><input type='submit' value='Register' style='background-color : blue' class='button' [disabled]='!registerForm.valid'></p>
 
@@ -81,7 +78,7 @@
           <br>
           
           <p>Password : 
-              <input type='text' name='lpassword' required minlength="1" [(ngModel)]='login.password' [ngClass]="{ boxborder : loginpassword.errors }"
+              <input type='password' name='lpassword' required minlength="1" [(ngModel)]='login.password' [ngClass]="{ boxborder : loginpassword.errors }"
               #loginpassword="ngModel"></p>
               <span *ngIf='loginpassword.errors'>Error : </span>
               <span *ngIf='loginpassword.errors?.required'>Password is required</span>
